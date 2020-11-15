@@ -301,7 +301,7 @@ public:
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
 				else  (BinarySearchTree<T, U>::RemoveNode_vect(ptr, BinarySearchTree<T, U>::root, a));
 			}
-			/*else if (a == 2)
+			else if (a == 2)
 			{
 				Node<T, U>* ptr = FindPrivate2_vect(v, BinaryTree<T, U>::root);
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
@@ -312,7 +312,7 @@ public:
 				Node<T, U>* ptr = FindPrivate3_vect(v, NarrayTree<T, U>::root);
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
 				else (NarrayTree<T, U>::RemoveNode_vect(ptr, NarrayTree<T, U>::root, a));
-			}*/
+			}
 		}
 		else if (b == 2) {
 			PrintPreOrder_vect(a);
@@ -325,7 +325,7 @@ public:
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
 				else  (BinarySearchTree<T, U>::RemoveNode_vect(ptr, BinarySearchTree<T, U>::root, a));
 			}
-			/*else if (a == 2)
+			else if (a == 2)
 			{
 				Node<T, U>* ptr = FindPrivateId2(id, BinaryTree<T, U>::root);
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
@@ -336,7 +336,7 @@ public:
 				Node<T, U>* ptr = FindPrivateId3(id, BinaryTree<T, U>::root);
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
 				else (BinaryTree<T, U>::RemoveNode_vect(ptr, NarrayTree<T, U>::root, a));
-			}*/
+			}
 		}
 		else if (b == 3)
 		{
@@ -350,7 +350,7 @@ public:
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
 				else  (BinarySearchTree<T, U>::RemoveNode_vect(ptr, BinarySearchTree<T, U>::root, 2));
 			}
-			/*else if (a == 2)
+			else if (a == 2)
 			{
 				Node<T, U>* ptr = FindPrivateId2(id, BinaryTree<T, U>::root);
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
@@ -361,7 +361,7 @@ public:
 				Node<T, U>* ptr = FindPrivateId3(id, BinaryTree<T, U>::root);
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
 				else (BinaryTree<T, U>::RemoveNode_vect(ptr, NarrayTree<T, U>::root, 2));
-			}*/
+			}
 		}
 	}
 private:

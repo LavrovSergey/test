@@ -11,13 +11,13 @@ public:
 	int d = 1;
 	Node<T, U>* root=new Node<T, U>;
 	/*! Constructer. Root = 0.*/
-	/*BinarySearchTree()
+	BinarySearchTree()
 	{
 		root = NULL;
 		root->data = NULL;
 		root->left = NULL;
 		root->right = NULL;
-	}*/
+	}
 	/*!Creating a Part1.*/
 	void creat_leaf(T e, bool way) {
 		U* cur = new U;
@@ -107,13 +107,13 @@ public:
 			}
 			else
 			{
-				if (p->data->GetVector() <= parent->data->GetVector() && parent->left != NULL)
+				if (p->data->GetVector(0) <= parent->data->GetVector(0) && parent->left != NULL)
 				{
 					parent->left == p ?
 						RemoveMatch_vect(parent, parent->left, true, a) :
 						RemoveNode_vect(p, parent->left, a);
 				}
-				else if (p->data->GetVector() > parent->data->GetVector() && parent->right != NULL)
+				else if (p->data->GetVector(0) > parent->data->GetVector(0) && parent->right != NULL)
 				{
 					parent->right == p ?
 						RemoveMatch_vect(parent, parent->right, false, a) :
@@ -129,7 +129,7 @@ private:
 			root = new Node<T, U>;
 			root->data = cur;
 		}
-		else if (cur->GetVector() <= node->data->GetVector())
+		else if (cur->GetVector(0) <= node->data->GetVector(0))
 		{
 			if (node->left != NULL)
 			{
@@ -142,7 +142,7 @@ private:
 				cur->way = 0;
 			}
 		}
-		else if (cur->GetVector() > node->data->GetVector())
+		else if (cur->GetVector(0) > node->data->GetVector(0))
 		{
 			if (node->right != NULL)
 			{
@@ -195,7 +195,6 @@ private:
 	}
 	/*! Delete the node that was found before.*/
 	void RemoveMatch(Node<T, U>* parent, Node<T, U>* match, bool left, int a) {
-
 		if (match->left == NULL && match->right == NULL)
 		{
 			left == true ? parent->left = NULL : parent->right = NULL;
@@ -242,12 +241,11 @@ private:
 		else
 		{
 			Node<T, U>* p = FindSmallestPrivate(root->right);
-			RemoveNode_vect(p, root);
+			RemoveNode_vect(p, root,a);
 			root->data= p->data;
 		}
 	}
 	void RemoveMatch_vect(Node<T, U>* parent, Node<T, U>* match, bool left, int a) {
-
 		if (match->left == NULL && match->right == NULL)
 		{
 			left == true ? parent->left = NULL : parent->right = NULL;
