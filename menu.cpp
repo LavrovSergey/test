@@ -201,7 +201,7 @@ int menu1(bool isRunning, int a)
 		switch (answer)
 		{
 		case 0: i.AddLeaf(a); break;
-		case 1: i.PrintInOrder(a); break;
+		case 1: i.PrintInOrder(a); break;/*
 		case 2: i.PrintPreOrder(a); break;
 		case 3: i.PrintPostOrder(a); break;
 		case 4: i.FindByTheWay(a); break;
@@ -217,7 +217,7 @@ int menu1(bool isRunning, int a)
 		case 14: i_v.Find_vect(a); break;
 		case 15: i_v.PrintInOrder_vect(a); i_v.Delete_vect(a, 1); break;
 		case 16: i_v.PrintInOrder_vect(a); i_v.Delete_vect(a, 2); break;
-		case 17: i_v.PrintInOrder_vect(a); i_v.Delete_vect(a, 3); break;
+		case 17: i_v.PrintInOrder_vect(a); i_v.Delete_vect(a, 3); break;*/
 		case 18: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
 		}
 	}
@@ -239,7 +239,7 @@ int menu2(bool isRunning, int a)
 		switch (answer)
 		{
 		case 0: d.AddLeaf(a); break;
-		case 1: d.PrintInOrder(a); break;
+		case 1: d.PrintInOrder(a); break;/*
 		case 2: d.PrintPreOrder(a); break;
 		case 3: d.PrintPostOrder(a); break;
 		case 4: d.FindByTheWay(a); break;
@@ -255,7 +255,7 @@ int menu2(bool isRunning, int a)
 		case 14: d_v.Find_vect(a); break;
 		case 15: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 1); break;
 		case 16: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 2); break;
-		case 17: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 3); break;
+		case 17: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 3); break;*/
 		case 18: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
 		}
 	}
@@ -276,7 +276,7 @@ int menu3(bool isRunning, int a)
 
 		switch (answer)
 		{
-		case 0: s.AddLeaf(a); break;
+		case 0: s.AddLeaf(a); break;/*
 		case 1: s.PrintInOrder(a); break;
 		case 2: s.PrintPreOrder(a); break;
 		case 3: s.PrintPostOrder(a); break;
@@ -293,7 +293,7 @@ int menu3(bool isRunning, int a)
 		case 14: s_v.Find_vect(a); break;
 		case 15: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 1); break;
 		case 16: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 2); break;
-		case 17: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 3); break;
+		case 17: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 3); break;*/
 		case 18: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
 		}
 	}
