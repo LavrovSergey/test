@@ -1,19 +1,19 @@
 #pragma once
 #include <string>
 #include <vector>
-
+using namespace std;
 /*! Book class.*/
 class Book {
 private:
 	string data; //name of the book
-	vector<std::string> authors;
+	vector<string> authors;
 	int v;
 	int d, m, y;
 	int pages;
 	string plot;
 	int id = 0;
 public:
-	Book(string data, std::vector<string> authors, int v, int d, int m, int y,int pages,string plot,int id,bool way) {
+	Book(string data, vector<string> authors, int v, int d, int m, int y,int pages, string plot,int id,bool way) {
 
 		this->data = data;
 		this->authors = authors;
@@ -29,11 +29,11 @@ public:
 	string GetData() { return data; };
 	string GetAuthor(int i) { return authors[i]; };
 	int GetDay() { return d; };
-	int GetDataMonth() { return m; };
+	int GetMonth() { return m; };
 	int GetYear() { return y; };
 	int GetPages() { return pages; };
 	string GetPlot() { return plot; };
-	/*int GetVectorSize() { return v.size(); };*/
+	int GetVectorSize() { return authors.size(); };
 	/*std::vector<T> GetVectorF() { return v; };*/
 	int GetId() { return id; };
 	bool way;

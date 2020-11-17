@@ -1,5 +1,6 @@
 #pragma once
 #include "Part1.h"
+#include "Book.h"
 #include "Node.h"
 /*! @param T -data type
 * @param U -object.*/
@@ -9,19 +10,15 @@ class BinarySearchTree
 {
 public:
 	int d = 1;
-	 Node<U>* root=new Node<U>;
+	Node<U>* root;
 	/*! Constructer. Root = 0.*/
 	BinarySearchTree()
 	{
 		root = NULL;
-		root->data = NULL;
-		root->left = NULL;
-		root->right = NULL;
 	}
 	/*!Creating a Part1.*/
 	void creat_leaf(T e, bool way) {
-		U* cur = new U;
-		cur(e,0, d++, way);
+		U* cur = new U(e, d++, way);
 		AddLeaf(cur, root);
 	};
 	/*! Adding a Node.*/
@@ -29,9 +26,10 @@ public:
 		T comp = cur->GetData();
 		if (root == NULL)
 		{
+			root= new Node<U>;
 			root->data = cur;
 		}
-		else if (comp<= node->data->data)
+		else if (comp<= node->data->GetData())
 		{
 			if (node->left != NULL)
 			{
@@ -44,7 +42,7 @@ public:
 				cur->way = 0;
 			}
 		}
-		else if (comp > node->data->data)
+		else if (comp > node->data->GetData())
 		{
 			if (node->right != NULL)
 			{
@@ -60,8 +58,7 @@ public:
 	}
 	/*! Create a node for the vector.*/
 	void creat_leaf_v(std::vector<T> v, bool way) {
-		U* cur = new U;
-		cur(0, v, d++, way);
+		U* cur = new U(v, d++, way);
 		/*cur->v = vv;
 		cur->way = way1;
 		cur->id = d++;*/
@@ -183,6 +180,7 @@ private:
 			delPtr->left = NULL;
 			delete delPtr;
 		}
+		else if (a == 2) { root = NULL; }
 		else
 		{
 			Node<U>* p = FindSmallestPrivate(root->right);
