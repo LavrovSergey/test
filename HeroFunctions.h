@@ -39,28 +39,12 @@ int	id = 1;
 		else  (UpdatePrivate(ptr));
 		system("pause");
 	}*/
-	bool comp(Book* a, Book* b) {
-		if (a->GetYear() < b->GetYear()) {
-			return true;
-		}
-		else if (a->GetYear() > b->GetYear()) {
-			return false;
-		}
-		else if (a->GetMonth() < b->GetMonth()) {
-			return true;
-		}
-		else if (a->GetMonth() > b->GetMonth()) {
-			return false;
-		}
-		else if (a->GetDay() > b->GetDay()) {
-			return false;
-		}
-		else if (a->GetDay() < b->GetDay()) {
-			return true;
-		}
-		else {
-			return false;
-		}
+	bool comparator(const Book& a, const Book& b) {
+		if (a.GetYear() < b.GetYear()) return true;
+		if (a.GetYear() > b.GetYear()) return false;
+		if (a.GetMonth() < b.GetMonth()) return true;
+		if (a.GetMonth() > b.GetMonth()) return false;
+		return a.GetDay() < b.GetDay();
 	}
 	/*! Add a character.*/
 	void AddHero(Node<Book>* r) {
@@ -93,7 +77,7 @@ int	id = 1;
 			role.insert(pair<int, Node<Book>*>(a, ptr));
 			books.push_back(ptr->data);
 		}
-		sort(books.begin(), books.end(), comp);
+		sort(books.begin(), books.end(), comparator);
 		Hero* h = new Hero(data, n, names, role, id, books );
 		id++;
 		bst.AddLeaf(h, bst.GetRoot());
