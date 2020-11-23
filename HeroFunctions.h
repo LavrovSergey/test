@@ -52,10 +52,10 @@ int	id = 1;
 		else if (a->GetMonth() > b->GetMonth()) {
 			return false;
 		}
-		else if (a->GetDay > b->GetDay) {
+		else if (a->GetDay() > b->GetDay()) {
 			return false;
 		}
-		else if (a->GetDay < b->GetDay) {
+		else if (a->GetDay() < b->GetDay()) {
 			return true;
 		}
 		else {
