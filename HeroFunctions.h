@@ -39,12 +39,12 @@ int	id = 1;
 		else  (UpdatePrivate(ptr));
 		system("pause");
 	}*/
-	bool comparator(const Book& a, const Book& b) {
-		if (a.GetYear() < b.GetYear()) return true;
-		if (a.GetYear() > b.GetYear()) return false;
-		if (a.GetMonth() < b.GetMonth()) return true;
-		if (a.GetMonth() > b.GetMonth()) return false;
-		return a.GetDay() < b.GetDay();
+	bool comparator( Book* a,  Book* b) {
+		if (a->GetYear() < b->GetYear()) return true;
+		if (a->GetYear() > b->GetYear()) return false;
+		if (a->GetMonth() < b->GetMonth()) return true;
+		if (a->GetMonth() > b->GetMonth()) return false;
+		return a->GetDay() < b->GetDay();
 	}
 	/*! Add a character.*/
 	void AddHero(Node<Book>* r) {
