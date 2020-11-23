@@ -11,9 +11,12 @@ using namespace std;
 /*! @param T -data type
 * @param U -object.*/
 template <class T, class U>
-class Functions:  BinarySearchTree<T,U>,  BinaryTree<T, U>,  NarrayTree<T, U>
+class Functions
 {
 public:
+	BinarySearchTree<T, U> bst;
+	BinaryTree<T, U> bt;
+	NarrayTree<T, U> nt;
 	/*! Search by the way.
 	*0-left
 	*1-right
@@ -30,19 +33,19 @@ public:
 				cin >> mas[j];
 			}
 		if (a == 1) {
-			if (FindByTheWayPrivate(mas, BinarySearchTree<T, U>::root, count, i, n) == 0)
+			if (FindByTheWayPrivate(mas, bst.GetRoot(), count, i, n) == 0)
 			{
 				cout << "There is no such thing";
 			}
 		}
 		else if (a == 2) {
-			if (FindByTheWayPrivate(mas, BinaryTree<T, U>::root, count, i, n) == 0)
+			if (FindByTheWayPrivate(mas, bt.GetRoot(), count, i, n) == 0)
 			{
 				cout << "There is no such thing";
 			}
 		}
 		else {
-			if (FindByTheWayPrivate(mas, NarrayTree<T, U>::root, count, i, n) == 0)
+			if (FindByTheWayPrivate(mas, nt.GetRoot(), count, i, n) == 0)
 			{
 				cout << "There is no such thing";
 			}
@@ -63,21 +66,21 @@ public:
 			cin >> inf;
 			if (a == 1)
 			{
-				Node<U>* ptr = FindPrivate1(inf, BinarySearchTree<T, U>::root);
+				Node<U>* ptr = FindPrivate1(inf, bst.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else  (BinarySearchTree<T, U>::RemoveNode(ptr, BinarySearchTree<T, U>::root, 1));
+				else  (bst.RemoveNode(ptr, bst.GetRoot(), 1));
 			}
 			else if (a == 2)
 			{
-				Node<U>* ptr = FindPrivate2(inf, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivate2(inf, bt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, BinaryTree<T, U>::root, 1));
+				else (bt.RemoveNode(ptr, bt.GetRoot(), 1));
 			}
 			else if (a == 3)
 			{
-				Node<U>* ptr = FindPrivate3(inf, NarrayTree<T, U>::root);
+				Node<U>* ptr = FindPrivate3(inf, nt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (NarrayTree<T, U>::RemoveNode(ptr, NarrayTree<T, U>::root, 1));
+				else (nt.RemoveNode(ptr, nt.GetRoot(), 1));
 			}
 		}
 		else if (b == 2) {
@@ -86,21 +89,21 @@ public:
 			cin >> id;
 			if (a == 1)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinarySearchTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bst.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else  (BinarySearchTree<T, U>::RemoveNode(ptr, BinarySearchTree<T, U>::root, 1));
+				else  (bst.RemoveNode(ptr, bst.GetRoot(), 1));
 			}
 			else if (a == 2)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, BinaryTree<T, U>::root, 1));
+				else (bt.RemoveNode(ptr, bt.GetRoot(), 1));
 			}
 			else if (a == 3)
 			{
-				Node<U>* ptr = FindPrivateId3(id, NarrayTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId3(id, nt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (NarrayTree<T, U>::RemoveNode(ptr, NarrayTree<T, U>::root, 1));
+				else (nt.RemoveNode(ptr, nt.GetRoot(), 1));
 			}
 		}
 		else if (b == 3)
@@ -110,21 +113,21 @@ public:
 			cin >> id;
 			if (a == 1)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinarySearchTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bst.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else  (BinarySearchTree<T, U>::RemoveNode(ptr, BinarySearchTree<T, U>::root, 2));
+				else  (bst.RemoveNode(ptr, bst.GetRoot(), 2));
 			}
 			else if (a == 2)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, BinaryTree<T, U>::root, 2));
+				else (bt.RemoveNode(ptr, bt.GetRoot(), 2));
 			}
 			else if (a == 3)
 			{
-				Node<U>* ptr = FindPrivateId3(id, NarrayTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId3(id, nt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (NarrayTree<T, U>::RemoveNode(ptr, NarrayTree<T, U>::root, 2));
+				else (nt.RemoveNode(ptr, nt.GetRoot(), 2));
 			}
 		}
 	}
@@ -133,9 +136,9 @@ public:
 		T inf;
 		cout << "Enter information" << endl;
 		cin >> inf;
-		if (a == 1) { BinarySearchTree<T, U>::creat_leaf(inf, 0); }
-		else if (a == 2) { BinaryTree<T, U>::root = BinaryTree<T, U>::AddLeaf(BinaryTree<T, U>::root, BinaryTree<T, U>::creat_leaf(inf, 0)); }
-		else if (a == 3) { NarrayTree<T, U>::AddLeaf(inf, NarrayTree<T, U>::root); }
+		if (a == 1) {bst.creat_leaf(inf, 0); }
+		else if (a == 2) { bt.SetRoot(bt.AddLeaf(bt.GetRoot(), bt.creat_leaf(inf, 0))); }
+		else if (a == 3) {nt.AddLeaf(inf, nt.GetRoot()); }
 	}
 	/*! Adding a node for part1.*/
 	void AddLeaf_vect(int a) {
@@ -150,9 +153,9 @@ public:
 			cin >> inf;
 			v.push_back(inf);
 		}
-		if (a == 1) { BinarySearchTree<T, U>::creat_leaf_v(v, 0); }
-		else if (a == 2) { BinaryTree<T, U>::root = BinaryTree<T, U>::AddLeaf(BinaryTree<T, U>::root, BinaryTree<T, U>::creat_leaf_v(v, 0)); }
-		else if (a == 3) { NarrayTree<T, U>::AddLeaf_v(v, NarrayTree<T, U>::root); }
+		if (a == 1) {bst.creat_leaf_v(v, 0); }
+		else if (a == 2) { bt.SetRoot(bt.AddLeaf_v(bt.GetRoot(), bt.creat_leaf_v(v, 0))); }
+		else if (a == 3) {nt.AddLeaf_v(v, nt.GetRoot()); }
 	}
 	/*! Search by the information.*/
 	void Find(int a) {
@@ -161,21 +164,21 @@ public:
 		cin >> inf;
 		if (a == 1)
 		{
-			Node<U>* ptr = FindPrivate1(inf, BinarySearchTree<T, U>::root);
+			Node<U>* ptr = FindPrivate1(inf, bst.GetRoot());
 			if (ptr == NULL) { cout << "There is no such thing" << endl; }
 			else(cout << ptr->data->GetId() << ". " << ptr->data->GetData() << endl);
 			system("pause");
 		}
 		else if (a == 2)
 		{
-			Node<U>* ptr = FindPrivate2(inf, BinaryTree<T, U>::root);
+			Node<U>* ptr = FindPrivate2(inf, bt.GetRoot());
 			if (ptr == NULL) { cout << "There is no such thing" << endl; }
 			else(cout << ptr->data->GetId() << ". " << ptr->data->GetData() << endl);
 			system("pause");
 		}
 		else if (a == 3)
 		{
-			Node<U>* ptr = FindPrivate3(inf, NarrayTree<T, U>::root);
+			Node<U>* ptr = FindPrivate3(inf, nt.GetRoot());
 			if (ptr == NULL) { cout << "There is no such thing" << endl; }
 			else(cout << ptr->data->GetId() << ". " << ptr->data->GetData() << endl);
 			system("pause");
@@ -196,7 +199,7 @@ public:
 		}
 		if (a == 1)
 		{
-			Node<U>* ptr = FindPrivate1_vect(v, BinarySearchTree<T, U>::root);
+			Node<U>* ptr = FindPrivate1_vect(v, bst.GetRoot());
 			if (ptr == NULL) { cout << "There is no such thing" << endl; }                      //тут почему-то не работает но такое же в удалении работает
 			else {
 				cout << ptr->data->GetId()<< ". ";
@@ -209,7 +212,7 @@ public:
 		}
 		else if (a == 2)
 		{
-			Node<U>* ptr = FindPrivate2_vect(v, BinaryTree<T, U>::root);
+			Node<U>* ptr = FindPrivate2_vect(v, bt.GetRoot());
 			if (ptr == NULL) { cout << "There is no such thing" << endl; }
 			else {
 				cout << ptr->data->GetId() << ". ";
@@ -222,7 +225,7 @@ public:
 		}
 		else if (a == 3)
 		{
-			Node<U>* ptr = FindPrivate3_vect(v, NarrayTree<T, U>::root);
+			Node<U>* ptr = FindPrivate3_vect(v, nt.GetRoot());
 			if (ptr == NULL) { cout << "There is no such thing" << endl; }
 			else {
 				cout << ptr->data->GetId() << ". ";
@@ -255,21 +258,21 @@ public:
 			}
 			if (a == 1)
 			{
-				Node<U>* ptr = FindPrivate1_vect(v, BinarySearchTree<T, U>::root);
+				Node<U>* ptr = FindPrivate1_vect(v, bst.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else  (BinarySearchTree<T, U>::RemoveNode(ptr, BinarySearchTree<T, U>::root, a));
+				else  (bst.RemoveNode(ptr, bst.GetRoot(), a));
 			}
 			else if (a == 2)
 			{
-				Node<U>* ptr = FindPrivate2_vect(v, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivate2_vect(v, bt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, BinaryTree<T, U>::root, a));
+				else (bt.RemoveNode(ptr,bt.GetRoot(), a));
 			}
 			else if (a == 3)
 			{
-				Node<U>* ptr = FindPrivate3_vect(v, NarrayTree<T, U>::root);
+				Node<U>* ptr = FindPrivate3_vect(v, nt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (NarrayTree<T, U>::RemoveNode(ptr, NarrayTree<T, U>::root, a));
+				else (nt.RemoveNode(ptr, nt.GetRoot(), a));
 			}
 		}
 		else if (b == 2) {
@@ -279,21 +282,21 @@ public:
 			cin >> id;
 			if (a == 1)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinarySearchTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bst.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else  (BinarySearchTree<T, U>::RemoveNode(ptr, BinarySearchTree<T, U>::root, a));
+				else  (bst.RemoveNode(ptr, bst.GetRoot(), a));
 			}
 			else if (a == 2)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, BinaryTree<T, U>::root, a));
+				else (bt.RemoveNode(ptr, bt.GetRoot(), a));
 			}
 			else if (a == 3)
 			{
-				Node<U>* ptr = FindPrivateId3(id, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId3(id, nt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, NarrayTree<T, U>::root, a));
+				else (nt.RemoveNode(ptr, nt.GetRoot(), a));
 			}
 		}
 		else if (b == 3)
@@ -304,64 +307,64 @@ public:
 			cin >> id;
 			if (a == 1)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinarySearchTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bst.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else  (BinarySearchTree<T, U>::RemoveNode(ptr, BinarySearchTree<T, U>::root, 2));
+				else  (bst.RemoveNode(ptr, bst.GetRoot(), 2));
 			}
 			else if (a == 2)
 			{
-				Node<U>* ptr = FindPrivateId(id, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId(id, bt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, BinaryTree<T, U>::root, 2));
+				else (bt.RemoveNode(ptr, bt.GetRoot(), 2));
 			}
 			else if (a == 3)
 			{
-				Node<U>* ptr = FindPrivateId3(id, BinaryTree<T, U>::root);
+				Node<U>* ptr = FindPrivateId3(id, nt.GetRoot());
 				if (ptr == NULL) { cout << "There is no such thing" << endl; }
-				else (BinaryTree<T, U>::RemoveNode(ptr, NarrayTree<T, U>::root, 2));
+				else (nt.RemoveNode(ptr, nt.GetRoot(), 2));
 			}
 		}
 	}
 	/*! Print.*/
 	void PrintInOrder(int a) {
-		if (a == 1) { PrintInOrderPrivate(BinarySearchTree<T, U>::root); }
-		else if (a == 2) { PrintInOrderPrivate(BinaryTree<T, U>::root); }
-		else if (a == 3) { PrintPreOrderPrivate3(NarrayTree<T, U>::root); }
+		if (a == 1) { PrintInOrderPrivate(bst.GetRoot()); }
+		else if (a == 2) { PrintInOrderPrivate(bt.GetRoot()); }
+		else if (a == 3) { PrintPreOrderPrivate3(nt.GetRoot()); }
 		system("pause");
 	}
 	/*! Print.*/
 	void PrintInOrder_vect(int a) {
-		if (a == 1) { PrintInOrderPrivate_vect(BinarySearchTree<T, U>::root); }
-		else if (a == 2) { PrintInOrderPrivate_vect(BinaryTree<T, U>::root); }
-		else if (a == 3) { PrintPreOrderPrivate3_vect(NarrayTree<T, U>::root); }
+		if (a == 1) { PrintInOrderPrivate_vect(bst.GetRoot()); }
+		else if (a == 2) { PrintInOrderPrivate_vect(bt.GetRoot()); }
+		else if (a == 3) { PrintPreOrderPrivate3_vect(nt.GetRoot()); }
 		system("pause");
 	}
 	/*! Print.*/
 	void PrintPostOrder(int a) {
-		if (a == 1) { PrintPostOrderPrivate(BinarySearchTree<T, U>::root); }
-		else if (a == 2) { PrintPostOrderPrivate(BinaryTree<T, U>::root); }
-		else if (a == 3) { PrintPreOrderPrivate3(NarrayTree<T, U>::root); }
+		if (a == 1) { PrintPostOrderPrivate(bst.GetRoot()); }
+		else if (a == 2) { PrintPostOrderPrivate(bt.GetRoot()); }
+		else if (a == 3) { PrintPreOrderPrivate3(nt.GetRoot()); }
 		system("pause");
 	}
 	/*! Print.*/
 	void PrintPostOrder_vect(int a) {
-		if (a == 1) { PrintPostOrderPrivate_vect(BinarySearchTree<T, U>::root); }
-		else if (a == 2) { PrintPostOrderPrivate_vect(BinaryTree<T, U>::root); }
-		else if (a == 3) { PrintPreOrderPrivate3_vect(NarrayTree<T, U>::root); }
+		if (a == 1) { PrintPostOrderPrivate_vect(bst.GetRoot()); }
+		else if (a == 2) { PrintPostOrderPrivate_vect(bt.GetRoot()); }
+		else if (a == 3) { PrintPreOrderPrivate3_vect(nt.GetRoot()); }
 		system("pause");
 	}
 	/*! Print.*/
 	void PrintPreOrder(int a) {
-		if (a == 1) { PrintPreOrderPrivate(BinarySearchTree<T, U>::root); }
-		else if (a == 2) { PrintPreOrderPrivate(BinaryTree<T, U>::root); }
-		else if (a == 3) { PrintPreOrderPrivate3(NarrayTree<T, U>::root); }
+		if (a == 1) { PrintPreOrderPrivate(bst.GetRoot()); }
+		else if (a == 2) { PrintPreOrderPrivate(bt.GetRoot()); }
+		else if (a == 3) { PrintPreOrderPrivate3(nt.GetRoot()); }
 		system("pause");
 	}
 	/*! Print.*/
 	void PrintPreOrder_vect(int a) {
-		if (a == 1) { PrintPreOrderPrivate_vect(BinarySearchTree<T, U>::root); }
-		else if (a == 2) { PrintPreOrderPrivate_vect(BinaryTree<T, U>::root); }
-		else if (a == 3) { PrintPreOrderPrivate3_vect(NarrayTree<T, U>::root); }
+		if (a == 1) { PrintPreOrderPrivate_vect(bst.GetRoot()); }
+		else if (a == 2) { PrintPreOrderPrivate_vect(bt.GetRoot()); }
+		else if (a == 3) { PrintPreOrderPrivate3_vect(nt.GetRoot()); }
 		system("pause");
 	}
 private:

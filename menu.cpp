@@ -158,7 +158,8 @@ int menu_part2() {
 int part2(bool isRunning)
 {
 	BookFunctions <string, Book> b;
-	/*HeroFunctions <string, Hero> h;*/
+	HeroFunctions <string, Hero> h;
+	BookSeriesFunctions<string, BookSeries> bs;
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	isRunning = true;
@@ -169,18 +170,16 @@ int part2(bool isRunning)
 
 		switch (answer)
 		{
-		case 0: b.AddBook(); b.InFile(); break;
-		/*case 1: h.AddHero(); break;*/
-		case 2:b.PrintInOrder(); break;
-		/*case 3:h.PrintInOrder(); break;*/
-		/*case 4: b.Delete(); b.InFile(); break;*/
-	/*	case 5: h.Delete(); h.InFile(); break;
+		case 0: b.AddBook();/* b.InFile();*/ break;
+	    case 1: h.AddHero(b.bst.GetRoot()); break;
+		case 2:b.PrintInOrder(b.bst.GetRoot()); break;
+		case 3:h.PrintInOrder(); break;
+		case 4: b.Delete();/* b.InFile();*/ break;
+	    case 5: h.Delete(); /*h.InFile()*/; break;
 		case 6: b.Find(); break;
 		case 7: h.Find(); break;
-		case 8: b.Update(); break;
-		case 9: h.Update(); break;
-		case 10: h.Series(); break;*/
-		case 11: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
+		case 8: bs.CreateTree(h.bst.GetRoot()); break;
+		case 9: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
 		}
 	}
 	return 0;
@@ -239,7 +238,7 @@ int menu2(bool isRunning, int a)
 		switch (answer)
 		{
 		case 0: d.AddLeaf(a); break;
-		case 1: d.PrintInOrder(a); break;/*
+		case 1: d.PrintInOrder(a); break;
 		case 2: d.PrintPreOrder(a); break;
 		case 3: d.PrintPostOrder(a); break;
 		case 4: d.FindByTheWay(a); break;
@@ -255,7 +254,7 @@ int menu2(bool isRunning, int a)
 		case 14: d_v.Find_vect(a); break;
 		case 15: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 1); break;
 		case 16: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 2); break;
-		case 17: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 3); break;*/
+		case 17: d_v.PrintInOrder_vect(a); d_v.Delete_vect(a, 3); break;
 		case 18: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
 		}
 	}
@@ -276,7 +275,7 @@ int menu3(bool isRunning, int a)
 
 		switch (answer)
 		{
-		case 0: s.AddLeaf(a); break;/*
+		case 0: s.AddLeaf(a); break;
 		case 1: s.PrintInOrder(a); break;
 		case 2: s.PrintPreOrder(a); break;
 		case 3: s.PrintPostOrder(a); break;
@@ -293,7 +292,7 @@ int menu3(bool isRunning, int a)
 		case 14: s_v.Find_vect(a); break;
 		case 15: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 1); break;
 		case 16: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 2); break;
-		case 17: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 3); break;*/
+		case 17: s_v.PrintInOrder_vect(a); s_v.Delete_vect(a, 3); break;
 		case 18: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
 		}
 	}
@@ -314,7 +313,7 @@ int inf(bool isRunning, int a)
 		case 0: menu1(true, a); break;
 		case 1: menu2(true, a);  break;
 		case 2: menu3(true, a); break;
-	/*	case 3: part2(true); break;*/
+		case 3: part2(true); break;
 		case 4: system("cls"); cout << "Goodbye!\n__________________"; isRunning = false;
 		}
 	}

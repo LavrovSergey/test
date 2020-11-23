@@ -9,9 +9,11 @@ using namespace std;
 * @param U -object.*/
 /*! Function class for working with books.*/
 template <class T, class U>
-class BookFunctions : BinarySearchTree<T, U>
+class BookFunctions
 {
 public:
+	int id = 1;
+	BinarySearchTree<T, U> bst;
 	/*void FromFile() {
 		ifstream books("books.bin");
 		if (books.peek() != EOF) {
@@ -55,40 +57,40 @@ public:
 		cin.ignore(1, '\n');
 		cout << "Fill out the plot briefly" << endl;
 		getline(cin,plot);
-		Book* b = new Book(data,authors,n,d,m,y,pages,plot);
-		BinarySearchTree<string, Node<U>>::AddLeaf(b, BinarySearchTree<string, Node<U>>::root);
-
+		Book* b = new Book(data,authors,n,d,m,y,pages,plot, id);
+		id++;
+		bst.AddLeaf(b, bst.GetRoot());
 	}
 	/*! Delete a book.*/
-	/*void Delete()
+	void Delete()
 	{
 		PrintInOrder();
 		int id;
 		cout << "Enter id" << endl;
 		cin >> id;
-		Node<T, U>* ptr = FindPrivateId(id, BinarySearchTree<string, Node<T, U>>::root);
+		Node< U>* ptr = FindPrivateId(id, bst.GetRoot());
 		if (ptr == NULL) { cout << "There is no such thing" << endl; }
-		else  (BinarySearchTree<string, Node<T, U>>::RemoveNode(ptr, BinarySearchTree<string, Node<T, U>>::root, 1));
+		else  (bst.RemoveNode(ptr, bst.GetRoot(), 1));
 		system("pause");
-	}*/
+	}
 	/*! Print.*/
-	void PrintInOrder() {
-		PrintInOrderPrivate(BinarySearchTree<string, Node<U>>::root);
+	void PrintInOrder(Node<U>* r) {
+		PrintInOrderPrivate(r);
 		system("pause");
 	}
 	/*! Find.*/
-	/*void Find() {
+	void Find() {
 		string inf;
 		cout << "Enter what you want to find" << endl;
 		cin >> inf;
-		Node<U>* ptr1 = FindPrivate(inf, BinarySearchTree<string, Node<T, U>>::root);
+		Node<U>* ptr1 = FindPrivate(inf, bst.GetRoot());
 		if (ptr1 == NULL) { cout << "There is no such thing" << endl; }
 		else {
 			PrintBook(ptr1);
 		}
 		system("pause");
 	}
-	Node<U>* FindPrivate(string name, Node<T, U>* node)
+	Node<U>* FindPrivate(string name, Node<U>* node)
 	{
 		if (node != NULL)
 		{
@@ -109,7 +111,7 @@ public:
 			}
 		}
 		else { return node; }
-	}*/
+	}
 	void PrintBook(Node<U>* node) {
 		cout << node->data->GetId() << ". ";
 		cout << "Title: " << node->data->GetData() << endl;
@@ -117,14 +119,33 @@ public:
 		for (int i = 0; i < node->data->GetVectorSize(); i++)
 		{
 			cout << node->data->GetAuthor(i);
-			if (i <= node->data->GetVectorSize() - 1) { cout << ", "; }
+			if (i < node->data->GetVectorSize() - 1) { cout << ", "; }
 			else(cout << endl);
 		}
 		cout << "Date of writing:" << node->data->GetDay() << ". " << node->data->GetMonth() << ". " << node->data->GetYear()<< endl;
-		cout << "Number of pages:" << node->data->GetId() << ".";
+		cout << "Number of pages:" << node->data->GetPages()<<endl;
 		cout << "Plot:" << node->data->GetPlot() << endl;
 	}
+	/*! Search by id.*/
+	Node<U>* FindId(int id, Node<U>* r)
+	{
+	     return FindPrivateId(id, r);
+	}
 private:
+	Node<U>* FindPrivateId(int id, Node<U>* node) {
+		if (node == NULL) return node;
+		if (id == node->data->GetId()) {
+			return node;
+		}
+		Node<U>* tmp1 = FindPrivateId(id, node->left);
+		if (tmp1 != NULL) {
+			if (id == tmp1->data->GetId()) { return tmp1; }
+		}
+		Node<U>* tmp2 = FindPrivateId(id, node->right);
+		if (tmp2 != NULL) {
+			if (id == tmp2->data->GetId()) { return tmp2; }
+		}
+	}
 	//void UpdatePrivate(Node<T, U>* node) {
 	//	string s;
 	//	cout << "Enter new name of book" << endl;
@@ -145,21 +166,7 @@ private:
 	//	cout << "Fill in the plot briefly" << endl;
 	//	getline(cin, node->data->plot);
 	//}
-	///*! Search by id.*/
-	//Node<U>* FindPrivateId(int id, Node<T, U>* node) {
-	//	if (node == NULL) return node;
-	//	if (id == node->data->id) {
-	//		return node;
-	//	}
-	//	Node<T, U>* tmp1 = FindPrivateId(id, node->left);
-	//	if (tmp1 != NULL) {
-	//		if (id == tmp1->data->id) { return tmp1; }
-	//	}
-	//	Node<T, U>* tmp2 = FindPrivateId(id, node->right);
-	//	if (tmp2 != NULL) {
-	//		if (id == tmp2->data->id) { return tmp2; }
-	//	}
-	//}
+	
 	void PrintInOrderPrivate(Node<U>* node)
 	{
 		if ( node != NULL)

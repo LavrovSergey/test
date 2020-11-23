@@ -8,11 +8,16 @@ template<class T, class U>
 class BinaryTree {
 public:
 	int d = 1;
-	Node<U>* root;
 	/*! Designer. Root = 0.*/
 	BinaryTree()
 	{
 		root = NULL;
+	}
+	Node<U>* GetRoot() {
+		return root;
+	}
+	void SetRoot(Node<U>* node) {
+		root=node;
 	}
 	/*Part1* Find_max() {
 		return Find_maxPrivate(root);
@@ -209,4 +214,5 @@ private:
 			match->data = p->data;
 		}
 	}
+	Node<U>* root;
 };

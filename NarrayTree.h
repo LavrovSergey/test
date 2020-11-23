@@ -8,10 +8,12 @@ template <class T, class U>
 class NarrayTree {
 public:
 	int d = 0;
-	Node<U>* root ;
 	NarrayTree()
 	{
 		root = NULL;
+	}
+	Node<U>* GetRoot() {
+		return root;
 	}
 	/*! Adding a Node.
 	*We add more to the right.
@@ -35,19 +37,21 @@ public:
 					if (node->data->GetData() > inf) {
 						if (node->left) { AddLeaf(inf, node); c = true; }
 						else {
+							node->left = new Node<U>;
 							node->left->data = creat_leaf(inf, 0);
 							c = true;
 							break;
 						}
 					}
 				}
-				if (c == false) { node->right->data = creat_leaf(inf, 1); }
+				if (c == false) { node->right = new Node<U>; node->right->data = creat_leaf(inf, 1); }
 			}
 			else {
+				node->left->left = new Node<U>;
 				node->left->left->data = creat_leaf(inf, 0);
 			}
 		}
-		else(node->left->data = creat_leaf(inf, 0));
+		else { node->left = new Node<U>; node->left->data = creat_leaf(inf, 0); }
 	}
 	/*! Adding a Node.
 	*We add more to the right.
@@ -71,19 +75,21 @@ public:
 					if (node->data->GetVector(0) > v[0]) {
 						if (node->left) { AddLeaf_v(v, node); c = true; }
 						else {
+							node->left = new Node<U>;
 							node->left->data = creat_leaf_v(v, 0);
 							c = true;
 							break;
 						}
 					}
 				}
-				if (c == false) { node->right->data = creat_leaf_v(v, 1); }
+				if (c == false) { node->right = new Node<U>; node->right->data = creat_leaf_v(v, 1); }
 			}
 			else {
+				node->left->left = new Node<U>;
 				node->left->left->data = creat_leaf_v(v, 0);
 			}
 		}
-		else(node->left->data = creat_leaf_v(v, 0));
+		else { node->left = new Node<U>; node->left->data = creat_leaf_v(v, 0); }
 	}
 	/*! Deleting the Node.
 	*We are looking for the node 
@@ -250,4 +256,5 @@ private:
 			root->right = NULL;
 		}
 	}
+	Node<U>* root;
 };

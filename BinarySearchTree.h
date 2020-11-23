@@ -10,11 +10,13 @@ class BinarySearchTree
 {
 public:
 	int d = 1;
-	Node<U>* root;
 	/*! Constructer. Root = 0.*/
 	BinarySearchTree()
 	{
 		root = NULL;
+	}
+	Node<U>* GetRoot() {
+		return root;
 	}
 	/*!Creating a Part1.*/
 	void creat_leaf(T e, bool way) {
@@ -22,6 +24,42 @@ public:
 		AddLeaf(cur, root);
 	};
 	/*! Adding a Node.*/
+	void AddLeafDate(U* cur, Node<U>* node) {
+		Book* comp = cur->GetBook(0);
+		if (root == NULL)
+		{
+			root = new Node<U>;
+			root->data = cur;
+		}
+		else if (comp->GetData() <= node->data->GetData())
+		{
+			if (node->left != NULL)
+			{
+				AddLeaf(cur, node->left);
+			}
+			else
+			{
+				node->left = new Node<U>;
+				node->left->data = cur;
+				cur->way = 0;
+			}
+		}
+		else if (comp->GetData() > node->data->GetData())
+		{
+			if (node->right != NULL)
+			{
+				AddLeaf(cur, node->right);
+			}
+			else
+			{
+				node->right = new Node<U>;
+				node->right->data = cur;
+				cur->way = 1;
+			}
+		}
+
+
+	}
 	void AddLeaf(U* cur, Node<U>* node) {
 		T comp = cur->GetData();
 		if (root == NULL)
@@ -267,4 +305,5 @@ private:
 			match->data = p->data;
 		}
 	}
+	Node<U>* root;
 };

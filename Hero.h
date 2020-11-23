@@ -1,27 +1,27 @@
 #pragma once
 #include <string>
 #include <vector>
-
+#include<map>
+#include "Book.h"
+#include "Node.h"
+using namespace std;
 /*! Character class.*/
 class Hero {
 private:
 	string data; //name of the hero
 	int v;
 	vector<string> names;
-	int id = 0;
+	int id;
+	multimap<int, Node<Book>*> role;
+	vector<Book*> books;
 public:
-	Hero(string data,int v, vector<string> names, int id) {
-
-		this->data = data;
-		this->names = names;
-		this->v = v;
-		this->id = id;
-		this->way = way;
-	};
-	string GetData() { return data; };
-	string GetName(int i) { return names[i]; };
-	/*int GetVectorSize() { return v.size(); };*/
+	Hero(string data, int v, vector<string> names, multimap<int, Node<Book>*> role, int id, vector<Book*> books);
+	string GetData();
+	string GetName(int i);
+	int GetVectorSize();
+	vector<Book*> GetBooks();
+	multimap<int, Node<Book>*> GetRole();
 	/*std::vector<T> GetVectorF() { return v; };*/
-	int GetId() { return id; };
+	int GetId();
 	bool way;
 };
